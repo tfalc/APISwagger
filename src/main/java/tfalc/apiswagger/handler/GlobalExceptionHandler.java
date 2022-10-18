@@ -45,6 +45,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler({BusinessException.class})
     private ResponseEntity<Object> handleBusinessException(BusinessException e, WebRequest request){
         ResponseError error = responseError(e.getMessage(), HttpStatus.CONFLICT);
-        return handleExceptionInternal(e, error, headers(), HttpStatus.CONFLICT, request)
+        return handleExceptionInternal(e, error, headers(), HttpStatus.CONFLICT, request);
     }
 }
