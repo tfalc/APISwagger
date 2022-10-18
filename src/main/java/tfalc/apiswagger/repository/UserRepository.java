@@ -1,6 +1,7 @@
 package tfalc.apiswagger.repository;
 
 import org.springframework.stereotype.Repository;
+import tfalc.apiswagger.handler.BusinessException;
 import tfalc.apiswagger.model.Usuario;
 
 import java.util.ArrayList;
@@ -10,6 +11,9 @@ import java.util.List;
 public class UserRepository {
 
     public void save(Usuario usuario) {
+        if(usuario.getLogin() == null) {
+            throw new BusinessException("O campo login é obrigatório!");
+        }
         if (usuario.getId() == null) {
             System.out.println("SAVE - Recebendo usuário na camada repository");
         }else{
